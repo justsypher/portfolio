@@ -1,6 +1,7 @@
 import { useState, useMemo } from 'react'
 import { buildGraphData } from './lib/content'
 import type { AppView, ProjectNode } from './types'
+import Boot from './components/boot/boot'
 
 function App() {
   const [view, setView] = useState<AppView>('boot')
@@ -10,9 +11,13 @@ function App() {
 
   return (
     <div>
-      <p>view: {view}</p>
-      <p>nodes: {nodes.length}</p>
-      <p>edges: {edges.length}</p>
+      {view === 'boot' && <Boot onEnter={() => setView('about')} />}
+
+      <div id="dev-infos">
+        <p>view: {view}</p>
+        <p>nodes: {nodes.length}</p>
+        <p>edges: {edges.length}</p>
+      </div>
     </div>
   )
 }

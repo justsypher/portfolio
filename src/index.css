@@ -84,6 +84,20 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+
+
+#dev-infos {
+  position: fixed;
+  top: 0;
+  right: 0;
+  padding: 6px 8px; margin: 5px;
+  font-size: 10px;
+  color: var(--text-muted);
+  border: 1px solid var(--border-subtle);
+  border-radius: 4px;
+  background: var(--surface);
+}
+
 /*
 :root{
   --bg: '#0d0d0d',
