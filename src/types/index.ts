@@ -33,3 +33,15 @@ export interface ProjectNode extends GraphNode {
 export type AnyNode = GraphNode | ProjectNode
 export type Edge = [number, number]
 export type AppView = 'boot' | 'about' | 'graph' | 'project'
+
+export interface ProjectMeta {
+  title: string
+  slug: string
+  discipline: Discipline
+  tags: string[]
+  date: string
+  status: ProjectStatus
+  color: string
+  emoji: string
+  summary: string
+}

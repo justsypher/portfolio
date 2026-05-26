@@ -1,3 +1,130 @@
+/* Regular weight - used for normal text */
+@font-face {
+  font-family: 'ServerMono';
+  src: url('/fonts/ServerMono-Regular.woff2') format('woff2'),    /* Best compression, modern browsers */
+       url('/fonts/ServerMono-Regular.woff') format('woff'),      /* Good compression, wider support */
+       url('/fonts/ServerMono-Regular.otf') format('opentype');   /* Largest files, universal support */
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+} /* TODO : Check that the root path doesn't break everything once built because of the university's server's setup */
+
+/* Oblique variant - used for italic/oblique text */
+@font-face {
+  font-family: 'ServerMono';
+  src: url('/fonts/ServerMono-RegularOblique.woff2') format('woff2'),
+       url('/fonts/ServerMono-RegularOblique.woff') format('woff'),
+       url('/fonts/ServerMono-RegularOblique.otf') format('opentype');
+  font-weight: normal;
+  font-style: oblique;
+  font-display: swap;
+}
+
+/*
+@font-face {
+  font-family: 'Cormorant';
+  src: url('/fonts/Cormorant-Light.woff2') format('woff2'),
+       url('/fonts/Cormorant-Light.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+} */
+
+
+:root {
+  /* backgrounds */
+  --bg: #0d0d0d;
+  --surface: #111111;
+  --border: #1e1e1e;
+  --border-subtle: #161616;
+
+  /* text */
+  --text-primary: #f0f0f0;
+  --text-secondary: #888888;
+  --text-muted: #444444;
+  --text-faint: #2a2a2a;
+
+  /* disciplines */
+  --design: #e85d8a;
+  --code: #5b8de8;
+  --motion: #9b72e8;
+  --writing: #e8aa5b;
+
+  /* status */
+  --completed: #5b8de8;
+  --in-progress: #e8aa5b;
+  --archived: #444444;
+
+  /* fonts */
+  --font-mono: 'ServerMono', 'Fira Mono', monospace;
+  --font-serif: 'Cormorant', Georgia, serif;
+
+  /* graph */
+  --edge: rgba(255,255,255,0.06);
+  --edge-active: rgba(255,255,255,0.20);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body, #root {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: var(--bg);
+}
+
+body {
+  font-family: var(--font-mono);
+  font-weight: 300;
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+}
+
+/*
+:root{
+  --bg: '#0d0d0d',
+  surface: '#111111',
+  border: '#1e1e1e',
+  borderSubtle: '#161616',
+
+  text: {
+    primary: '#f0f0f0',
+    secondary: '#888888',
+    muted: '#444444',
+    faint: '#2a2a2a',
+  },
+
+  discipline: {
+    Design: '#e85d8a',
+    Code: '#5b8de8',
+    Motion: '#9b72e8',
+    Writing: '#e8aa5b',
+  },
+
+  status: {
+    completed: '#5b8de8',
+    'in-progress': '#e8aa5b',
+    archived: '#444444',
+  },
+
+  graph: {
+    edge: 'rgba(255,255,255,0.06)',
+    edgeActive: 'rgba(255,255,255,0.20)',
+    pulse: 'rgba(255,255,255,0.35)',
+    centerRing: 'rgba(255,255,255,0.5)',
+    tagText: '#444444',
+  },
+} as const
+
+export const FONTS = {
+  serif: "'Cormorant Garamond', Georgia, serif",
+  mono: "'ServerMono', 'SF Mono', monospace",
+
+
 :root {
   --text: #6b6375;
   --text-h: #08060d;
@@ -56,24 +183,4 @@
   padding: 0;
 }
 
-/* Regular weight - used for normal text */
-@font-face {
-  font-family: 'ServerMono';
-  src: url('../public/fonts/ServerMono-Regular.woff2') format('woff2'),    /* Best compression, modern browsers */
-       url('../public/fonts/ServerMono-Regular.woff') format('woff'),      /* Good compression, wider support */
-       url('../public/fonts/ServerMono-Regular.otf') format('opentype');   /* Largest files, universal support */
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-/* Oblique variant - used for italic/oblique text */
-@font-face {
-  font-family: 'ServerMono';
-  src: url('../public/fonts/ServerMono-RegularOblique.woff2') format('woff2'),
-       url('../public/fonts/ServerMono-RegularOblique.woff') format('woff'),
-       url('../public/fonts/ServerMono-RegularOblique.otf') format('opentype');
-  font-weight: normal;
-  font-style: oblique;
-  font-display: swap;
-}
+*/
