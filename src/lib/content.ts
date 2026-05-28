@@ -20,7 +20,7 @@ export const PROJECTS: ProjectMeta[] = [
     date: '2025',
     status: 'ongoing',
     color: 'var(--code)',
-    emoji: '⌨',
+    emoji: '⌨', // TODO : replace emojis with cover images
     summary: 'This very portfolio.',
   },
   // add more later
@@ -47,6 +47,7 @@ export function buildGraphData(projects: ProjectMeta[] = PROJECTS) {
           label: tag,
           type: 'tag',
           color: '#252525',
+          r: 10,
           visible: false,
         })
       }
@@ -62,6 +63,7 @@ export function buildGraphData(projects: ProjectMeta[] = PROJECTS) {
       id: projectId,
       label: p.title,
       type: 'project',
+      r: 12,
       color: p.color,
       emoji: p.emoji,
       slug: p.slug,

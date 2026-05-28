@@ -5,6 +5,7 @@ export const STATIC_NODES: AnyNode[] = [
     id: 0,
     label: '',
     type: 'center',
+    r: 20,
     color: '#ffffff',
     fixed: true,
     visible: true,
@@ -13,6 +14,7 @@ export const STATIC_NODES: AnyNode[] = [
     id: 1,
     label: 'Design',
     type: 'category',
+    r: 15,
     color: 'var(--design)',
     emoji: '✦',
     visible: false,
@@ -21,6 +23,7 @@ export const STATIC_NODES: AnyNode[] = [
     id: 2,
     label: 'Code',
     type: 'category',
+    r: 15,
     color: 'var(--code)',
     emoji: '⌨',
     visible: false,
@@ -29,6 +32,7 @@ export const STATIC_NODES: AnyNode[] = [
     id: 3,
     label: 'Motion',
     type: 'category',
+    r: 15,
     color: 'var(--motion)',
     emoji: '◎',
     visible: false,
@@ -37,6 +41,7 @@ export const STATIC_NODES: AnyNode[] = [
     id: 4,
     label: 'Writing',
     type: 'category',
+    r: 15,
     color: 'var(--writing)',
     emoji: '⌦',
     visible: false,
@@ -57,15 +62,32 @@ export const STRUCTURAL_EDGES = [
   [0, 4],
 ] as const
 
+// TODO : Adjust constants here until it feels good visually (also care about alpha decay because that's what's gonna help in transitions)
 export const PHYSICS = {
-  repulsion: -180,
-  centerStrength: 0.04,
+  repulsion: -80,
+  centerRepulsion: -200,
   linkDistance: {
-    centerToCategory: 100,
-    categoryToProject: 120,
-    projectToTag: 80,
+    centerToCategory: 80,
+    categoryToProject: 90,
+    projectToTag: 60,
   },
-  linkStrength: 0.5,
+  linkStrength: 0.8,
   alphaDecay: 0.02,
   velocityDecay: 0.4,
+  xStrength: 0.1,
+  yStrength: 0.25,
+} as const
+
+export const GRAPH_COLORS = {
+  edge: 'rgba(255,255,255,0.06)',
+  edgeActive: 'rgba(255,255,255,0.20)',
+  pulse: 'rgba(255,255,255,0.35)',
+  centerFill: '#111111',
+  centerRing: 'rgba(255,255,255,0.5)',
+  tagFill: '#161616',
+  tagStroke: '#222222',
+} as const
+export const GRAPH_FONTS = {
+  mono: "'ServerMono', 'Fira Mono', monospace",
+  serif: "'Cormorant', Georgia, serif",
 } as const

@@ -58,10 +58,6 @@
   /* fonts */
   --font-mono: 'ServerMono', 'Fira Mono', monospace;
   --font-serif: 'Cormorant', Georgia, serif;
-
-  /* graph */
-  --edge: rgba(255,255,255,0.06);
-  --edge-active: rgba(255,255,255,0.20);
 }
 
 *, *::before, *::after {
