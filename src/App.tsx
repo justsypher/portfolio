@@ -11,7 +11,8 @@ import { getAllProjects } from './lib/mdx'
 function App () {
   const [view, setView] = useState<AppView>('boot')
   const [activeProject, setActiveProject] = useState<ProjectNode | null>(null)
-  const [activeContent, setActiveContent] = useState<React.ComponentType | null>(null)
+  const [activeComponent, setActiveComponent] =
+    useState<React.ComponentType | null>(null)
 
   const { nodes, edges } = useMemo(() => buildGraphData(), [])
   const mdxProjects = useMemo(() => getAllProjects(), [])
@@ -50,8 +51,8 @@ function App () {
               isFullscreen={view === 'graph'}
               onProjectClick={node => {
                 const mdx = mdxProjects.find(p => p.meta.slug === node.slug)
+                setActiveComponent(() => mdx?.Component ?? null)
                 setActiveProject(node)
-                setActiveContent(mdx?.Content ?? null)
                 setView('project')
               }}
               onCenterClick={() => setView('about')}
@@ -66,7 +67,7 @@ function App () {
               <ProjectPage
                 key={activeProject.slug}
                 project={activeProject}
-                content={activeContent}
+                Component={activeComponent}
                 onBack={() => setView('graph')}
               />
             )}

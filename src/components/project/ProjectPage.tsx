@@ -7,11 +7,11 @@ import type { MDXProject } from '../../lib/mdx'
 
 interface ProjectPageProps {
   project: ProjectNode
-  content: React.ComponentType
+  Component: React.ComponentType | null
   onBack: () => void
 }
 
-export default function ProjectPage ({ project, content, onBack }: ProjectPageProps) {
+export default function ProjectPage ({ project, Component, onBack }: ProjectPageProps) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 16 }}
@@ -100,7 +100,7 @@ export default function ProjectPage ({ project, content, onBack }: ProjectPagePr
           </p>
         )}
         <Separator />
-        {content && (
+        {Component && (
           <div
             style={{
               fontFamily: 'var(--font-serif)',
@@ -109,7 +109,7 @@ export default function ProjectPage ({ project, content, onBack }: ProjectPagePr
               lineHeight: 1.8
             }}
           >
-            <Content />
+            <Component />
           </div>
         )}
       </div>
