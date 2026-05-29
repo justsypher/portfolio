@@ -3,8 +3,8 @@ import type { AnyNode } from '../types'
 export const DISCIPLINE_COLORS = {
   Design: '#e85d8a',
   Code: '#5b8de8',
-  Motion: '#9b72e8',
-  Writing: '#e8aa5b',
+  Marketing: '#9b72e8',
+  Ecriture: '#e8aa5b',
 } as const
 
 export const STATUS_COLORS = {
@@ -44,19 +44,19 @@ export const STATIC_NODES: AnyNode[] = [
   },
   {
     id: 3,
-    label: 'Motion',
+    label: 'Marketing',
     type: 'category',
     r: 15,
-    color: DISCIPLINE_COLORS.Motion,
+    color: DISCIPLINE_COLORS.Marketing,
     emoji: '◎',
     visible: false,
   },
   {
     id: 4,
-    label: 'Writing',
+    label: 'Ecriture',
     type: 'category',
     r: 15,
-    color: DISCIPLINE_COLORS.Writing,
+    color: DISCIPLINE_COLORS.Ecriture,
     emoji: '⌦',
     visible: false,
   },
@@ -65,8 +65,8 @@ export const STATIC_NODES: AnyNode[] = [
 export const CATEGORY_IDS: Record<string, number> = {
   Design: 1,
   Code: 2,
-  Motion: 3,
-  Writing: 4,
+  Marketing: 3,
+  Ecriture: 4,
 }
 
 export const STRUCTURAL_EDGES = [
@@ -78,7 +78,7 @@ export const STRUCTURAL_EDGES = [
 
 // TODO : Adjust constants here until it feels good visually (also care about alpha decay because that's what's gonna help in transitions)
 export const PHYSICS = {
-  repulsion: -80,
+  repulsion: -90,
   centerRepulsion: -200,
   linkDistance: {
     centerToCategory: 80,

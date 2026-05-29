@@ -1,0 +1,51 @@
+---
+title: Portfolio
+slug: portfolio
+discipline: Code
+tags: [webdesign, identity, webdev]
+date: "2026"
+status: completed
+color: "#5d95e8"
+emoji: ✦
+summary: Ce site même sur lequel vous êtes.
+---
+
+J’ai voulu créer un portfolio qui me ressemble : un réseau de connaissances, comme le graphe d’Obsidian, mais interactif et visuel. L’idée ? Montrer mes projets et compétences sous forme de nœuds connectés, avec des animations pour guider l’utilisateur. Un défi technique (React + D3 + Framer Motion) et un hommage à l’outil que j’utilise tous les jours.
+
+## Pourquoi ce projet ?
+Obsidian m’a appris une chose : les liens entre les idées sont aussi importants que les idées elles-mêmes. Son graphe de notes est devenu ma façon de penser – alors pourquoi ne pas en faire la base de mon portfolio ?
+
+J’ai choisi :
+- React + Vite pour la structure et la rapidité.
+- D3.js pour recréer un graphe dynamique, inspiré de celui d’Obsidian (mais en plus stylisé).
+- Framer Motion pour des transitions fluides, comme si l’utilisateur "naviguait" dans mes projets.
+
+## Le processus
+### L’inspiration Obsidian
+Le graphe d’Obsidian est simple mais puissant : des nœuds (mes notes) et des liens (leurs connexions). J’ai voulu garder cette simplicité, mais en ajoutant des couleurs pour différencier les types de projets, des animations pour rendre l'experience plus lisse, une interactivité (survol, clic) pour explorer les détails.
+### Les défis techniques
+D3 + React : D3 manipule le DOM directement, React aussi. Résultat ? Des conflits. J’ai résolu ça avec useRef et en isolant le rendu D3 dans un composant dédié.
+Performances : Un graphe avec trop de nœuds = lag. J’ai limité le nombre d’éléments affichés et optimisé les calculs de forces.
+Framer Motion : Au début, j’ai trop animé. J’ai simplifié pour garder seulement les transitions utiles (ex : fade-in des légendes).
+### La sémiotique
+J’ai appliqué des principes de sémiotique pour que chaque élément "parle" :
+
+Couleurs : Bleu pour les projets techniques, vert pour les créatifs, etc.
+Tailles des nœuds : Plus un projet est important, plus son nœud est gros.
+Mouvements : Les animations guident l’œil (ex : un nœud qui pulse quand on le survole).
+
+
+## Ce que j’ai appris
+### Techniquement :
+Intégrer D3 dans React sans tout casser.
+Optimiser les performances d’un graphe interactif.
+Utiliser Framer Motion pour des animations utiles (pas juste jolies).
+
+### En design :
+La sémiotique change tout : un bon design ne se voit pas, il se comprend.
+Moins, c’est plus. Un graphe trop chargé perd son sens.
+
+### Ce que je changerais :
+Ajouter des tests unitaires (j’ai testé manuellement, mais c’est risqué).
+Explorer TypeScript pour éviter les bugs.
+Simplifier encore la structure pour éviter les ralentissements.

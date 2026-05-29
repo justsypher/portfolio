@@ -45,17 +45,21 @@ export default function About () {
           letterSpacing: '0.07em',
         }}
       >
-        This will later be my bio. if you see this it means either i forgot to
-        remove it (i'm sorry) or you just found the github i used for this
-        project. In that case you can look around. You'll see i've used many new
-        libraries i've never used before. This portfolio was kind of a test for
-        me, to see how fast i could get used to another environment. I'm sorry
-        if there's any mistakes in the code. Please just tell me and i will look
-        into it.
+        Développeur full-stack formé en MMI (une filière qui m’a appris à allier technique, créativité et communication), je navigue avec aisance entre le code, le design et la production de médias. Passionné par les jeux vidéo (que je crée, analyse ou modde à mes heures perdues), j'aime m'intéresser a des sujets en tout genre comme les défis techniques des nouvelles technologies, la psychologie du langage ou encore la mythologie nordique.
+      </p>
+      <p
+        style={{
+          fontFamily: 'var(--font-mono)',
+          fontSize: '1rem',
+          color: 'var(--text-secondary)',
+          lineHeight: 1.8,
+          marginBottom: 32,
+          letterSpacing: '0.07em',
+        }}
+      >
+        Mon approche ? Apprendre en faisant, explorer sans limites, et transformer des idées en projets concrets – qu’il s’agisse d’une application web, d’une vidéo expérimentale ou d’un prototype de jeu. Toujours en quête de défis hybrides où la technique rencontre l’art, et où l’innovation rime avec accessibilité
       </p>
 
-      {/* divider */}
-      {/* skills */}
       <Separator />
       <h1
         style={{
