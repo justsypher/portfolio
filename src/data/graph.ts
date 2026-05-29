@@ -1,5 +1,19 @@
 import type { AnyNode } from '../types'
 
+export const DISCIPLINE_COLORS = {
+  Design: '#e85d8a',
+  Code: '#5b8de8',
+  Motion: '#9b72e8',
+  Writing: '#e8aa5b',
+} as const
+
+export const STATUS_COLORS = {
+  'completed': '#5b8ce88f',
+  'ongoing': '#e8aa5b8f',
+  'archived': '#4444448f',
+} as const
+
+
 export const STATIC_NODES: AnyNode[] = [
   {
     id: 0,
@@ -15,7 +29,7 @@ export const STATIC_NODES: AnyNode[] = [
     label: 'Design',
     type: 'category',
     r: 15,
-    color: 'var(--design)',
+    color: DISCIPLINE_COLORS.Design,
     emoji: '✦',
     visible: false,
   },
@@ -24,7 +38,7 @@ export const STATIC_NODES: AnyNode[] = [
     label: 'Code',
     type: 'category',
     r: 15,
-    color: 'var(--code)',
+    color: DISCIPLINE_COLORS.Code,
     emoji: '⌨',
     visible: false,
   },
@@ -33,7 +47,7 @@ export const STATIC_NODES: AnyNode[] = [
     label: 'Motion',
     type: 'category',
     r: 15,
-    color: 'var(--motion)',
+    color: DISCIPLINE_COLORS.Motion,
     emoji: '◎',
     visible: false,
   },
@@ -42,7 +56,7 @@ export const STATIC_NODES: AnyNode[] = [
     label: 'Writing',
     type: 'category',
     r: 15,
-    color: 'var(--writing)',
+    color: DISCIPLINE_COLORS.Writing,
     emoji: '⌦',
     visible: false,
   },

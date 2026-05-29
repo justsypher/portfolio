@@ -3,6 +3,7 @@ import type { AnyNode, ProjectNode } from '../../types'
 import type { Edge } from '../../types'
 import { useSimulation } from '../../hooks/useSimulation'
 import { useGraphRenderer } from '../../hooks/useGraphRenderer'
+import PeekCard from '../UI/PeekCard'
 
 interface GraphProps {
     nodes: AnyNode[]
@@ -158,13 +159,9 @@ export default function Graph({
     // Canvas element
     return (
         <div ref={wrapRef} style={{
-            position: 'fixed',
-            top: 0,
-            left: 0,
+            position: 'relative',
             width: '100%',
-            height: isFullscreen ? '100%' : '52%',
-            transition: 'height 0.9s cubic-bezier(0.76, 0, 0.24, 1)',
-            zIndex: 10,
+            height: '100%',
         }}>
             <canvas
                 ref={canvasRef}
@@ -173,6 +170,14 @@ export default function Graph({
                 onClick={isFullscreen ? handleClick : onEnterGraph}
                 style={{ display: 'block', cursor: isFullscreen ? 'default' : 'pointer' }}
             />
+            {peekNode && (
+                <PeekCard
+                    project={peekNode}
+                    containerWidth={size.width}
+                    containerHeight={size.height}
+                    onClick={() => onProjectClick(peekNode)}
+                />
+            )}
         </div>
     )
 }

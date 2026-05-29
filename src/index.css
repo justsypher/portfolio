@@ -44,17 +44,6 @@
   --text-muted: #444444;
   --text-faint: #2a2a2a;
 
-  /* disciplines */
-  --design: #e85d8a;
-  --code: #5b8de8;
-  --motion: #9b72e8;
-  --writing: #e8aa5b;
-
-  /* status */
-  --completed: #5b8de8;
-  --in-progress: #e8aa5b;
-  --archived: #444444;
-
   /* fonts */
   --font-mono: 'ServerMono', 'Fira Mono', monospace;
   --font-serif: 'Cormorant', Georgia, serif;
@@ -69,7 +58,7 @@
 html, body, #root {
   width: 100%;
   height: 100%;
-  overflow: hidden;
+  /*overflow: hidden;*/
   background: var(--bg);
 }
 

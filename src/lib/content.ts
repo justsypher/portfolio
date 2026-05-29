@@ -1,4 +1,5 @@
 import type { ProjectMeta } from '../types'
+import { DISCIPLINE_COLORS } from '../data/graph'
 
 export const PROJECTS: ProjectMeta[] = [
   {
@@ -8,7 +9,7 @@ export const PROJECTS: ProjectMeta[] = [
     tags: ['brand', 'identity', 'logo'],
     date: '2024',
     status: 'completed',
-    color: 'var(--design)',
+    color: DISCIPLINE_COLORS.Design,
     emoji: '✦',
     summary: 'A complete visual identity system for a Berlin-based architecture firm.',
   },
@@ -19,7 +20,7 @@ export const PROJECTS: ProjectMeta[] = [
     tags: ['react', 'd3', 'generative'],
     date: '2025',
     status: 'ongoing',
-    color: 'var(--code)',
+    color: DISCIPLINE_COLORS.Code,
     emoji: '⌨', // TODO : replace emojis with cover images
     summary: 'This very portfolio.',
   },

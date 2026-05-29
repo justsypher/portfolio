@@ -1,14 +1,16 @@
-import type { ProjectNode } from "../../types"
+import type { ProjectNode } from '../../types'
+import { STATUS_COLORS } from '../../data/graph'
 
 interface PeekCardProps {
-    project: ProjectNode
-    containerWidth: number
-    containerHeight: number
-    onClick: () => void
+  project: ProjectNode
+  containerWidth: number
+  containerHeight: number
+  onClick: () => void
 }
 
 const CARD_WIDTH = 220
 const CARD_HEIGHT = 200
+
 export default function PeekCard({
   project,
   containerWidth,
@@ -22,25 +24,21 @@ export default function PeekCard({
   return (
     <div onClick={onClick} style={{
       position: 'absolute',
-      left: x,
-      top: y,
+      left: x, top: y,
       width: CARD_WIDTH,
       background: 'var(--surface)',
       border: '0.5px solid var(--border)',
       borderRadius: 8,
       cursor: 'pointer',
       overflow: 'hidden',
+      zIndex: 50,
     }}>
-      {/* emoji placeholder */}
-      <div style={{ ... }}>
-        {project.emoji}
+      <div style={{ padding: 12 }}>
+        <p style={{ fontFamily: 'var(--font-serif)', fontSize: 16, marginBottom: 6 }}>{project.label}</p>
+        <p style={{ fontSize: 10, color: 'var(--text-muted)', marginBottom: 4 }}>{project.date} · <span style={{ color: STATUS_COLORS[project.status] }}>{project.status}</span></p>
+        <p style={{ fontSize: 10, color: 'var(--text-muted)', marginBottom: 6 }}>{project.tags.map(t => '#' + t).join(' ')}</p>
+        <p style={{ fontSize: 10, color: 'var(--text-faint)' }}>{project.summary}</p>
       </div>
-
-      {project.label/* title */}
-      {project.tags/* tags */}
-      {project.status/* date + status */}
-      {project.summary/* summary */}
     </div>
   )
 }
-
