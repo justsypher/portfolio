@@ -75,11 +75,11 @@ function App () {
         </div>
       )}
 
-      <div id='dev-infos'>
+      {/*<div id='dev-infos'>
         <p>view: {view}</p>
         <p>nodes: {nodes.length}</p>
         <p>edges: {edges.length}</p>
-      </div>
+      </div>*/}
     </div>
   )
 }

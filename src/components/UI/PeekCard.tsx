@@ -31,7 +31,7 @@ export default function PeekCard ({
       initial={{ opacity: 0, scale: 0.93, y: 4 }}
       animate={{ opacity: 1, scale: 1, y: 0 }}
       exit={{ opacity: 0, scale: 0.93, y: 4 }}
-      transition={{ duration: 0.18, ease: EASING.spring }}
+      transition={{ duration: 0.18, ease: EASING.spring as any}}
       onClick={onClick}
       style={{
         position: 'absolute',

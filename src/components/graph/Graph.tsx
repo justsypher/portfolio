@@ -30,7 +30,7 @@ export default function Graph({
     const [hovered, setHovered] = useState<number | null>(null)
     const [peekNode, setPeekNode] = useState<ProjectNode | null>(null)
 
-    const { simRef, revealWave } = useSimulation({
+    const { revealWave } = useSimulation({
         nodes,
         edges,
         width: size.width,

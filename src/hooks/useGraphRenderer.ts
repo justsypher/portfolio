@@ -1,4 +1,4 @@
-import { useCallback, useRef } from 'react'
+import { useCallback } from 'react'
 import type { AnyNode, Edge } from '../types'
 import { GRAPH_COLORS, GRAPH_FONTS } from '../data/graph'
 
@@ -10,7 +10,7 @@ interface DrawOptions {
 }
 
 export function useGraphRenderer(
-    canvasRef: React.RefObject<HTMLCanvasElement>
+    canvasRef: React.RefObject<HTMLCanvasElement | null>
 ) {
 
     const draw = useCallback(({ nodes, edges, hovered, pulse }: DrawOptions) => {

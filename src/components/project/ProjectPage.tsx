@@ -3,7 +3,6 @@ import { STATUS_COLORS } from '../../data/graph'
 import Separator from '../UI/Separator'
 import { motion } from 'framer-motion'
 import { EASING } from '../../lib/animation'
-import type { MDXProject } from '../../lib/mdx'
 
 interface ProjectPageProps {
   project: ProjectNode
@@ -17,7 +16,7 @@ export default function ProjectPage ({ project, Component, onBack }: ProjectPage
       initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: 16 }}
-      transition={{ duration: 0.15, ease: EASING.smooth }}
+      transition={{ duration: 0.15, ease: EASING.smooth as any}}
       style={{
         position: 'fixed',
         inset: 0,

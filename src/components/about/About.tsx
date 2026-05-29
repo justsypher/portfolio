@@ -6,7 +6,7 @@ export default function About () {
     <div
       style={{
         padding: '40px 48px 80px',
-        maxWidth: 640,
+        maxWidth: 800,
         margin: '0 auto'
       }}
     >
