@@ -5,34 +5,53 @@ import Boot from './components/boot/Boot'
 import Graph from './components/graph/Graph'
 import About from './components/about/About'
 import ProjectPage from './components/project/ProjectPage'
+import { AnimatePresence } from 'framer-motion'
+import { getAllProjects } from './lib/mdx'
 
-function App() {
+function App () {
   const [view, setView] = useState<AppView>('boot')
   const [activeProject, setActiveProject] = useState<ProjectNode | null>(null)
+  const [activeContent, setActiveContent] = useState<React.ComponentType | null>(null)
 
   const { nodes, edges } = useMemo(() => buildGraphData(), [])
+  const mdxProjects = useMemo(() => getAllProjects(), [])
 
   return (
     <div>
-      {view === 'boot' && <Boot onEnter={() => setView('about')} />}
+      <AnimatePresence>
+        {view === 'boot' && (
+          <Boot
+            onEnter={() => {
+              setView('graph')
+              setTimeout(() => setView('about'), 1500)
+            }}
+          />
+        )}
+      </AnimatePresence>
 
       {view !== 'boot' && (
-        <div style={{
-          height: '100vh',
-          overflowY: view === 'about' ? 'auto' : 'hidden',
-        }}>
-          <div style={{
-            width: '100%',
-            height: view === 'about' ? '52vh' : '100vh',
-            transition: 'height 0.9s cubic-bezier(0.76, 0, 0.24, 1)',
-            zIndex: 10,
-          }}>
+        <div
+          style={{
+            height: '100vh',
+            overflowY: view === 'about' ? 'auto' : 'hidden'
+          }}
+        >
+          <div
+            style={{
+              width: '100%',
+              height: view === 'about' ? '52vh' : '100vh',
+              transition: 'height 0.9s cubic-bezier(0.76, 0, 0.24, 1)',
+              zIndex: 10
+            }}
+          >
             <Graph
               nodes={nodes}
               edges={edges}
               isFullscreen={view === 'graph'}
-              onProjectClick={(node) => {
+              onProjectClick={node => {
+                const mdx = mdxProjects.find(p => p.meta.slug === node.slug)
                 setActiveProject(node)
+                setActiveContent(mdx?.Content ?? null)
                 setView('project')
               }}
               onCenterClick={() => setView('about')}
@@ -42,16 +61,20 @@ function App() {
 
           {view === 'about' && <About />}
 
-          {view === 'project' && activeProject && (
-            <ProjectPage
-              project={activeProject}
-              onBack={() => setView('graph')}
-            />
-          )}
+          <AnimatePresence>
+            {view === 'project' && activeProject && (
+              <ProjectPage
+                key={activeProject.slug}
+                project={activeProject}
+                content={activeContent}
+                onBack={() => setView('graph')}
+              />
+            )}
+          </AnimatePresence>
         </div>
       )}
 
-      <div id="dev-infos">
+      <div id='dev-infos'>
         <p>view: {view}</p>
         <p>nodes: {nodes.length}</p>
         <p>edges: {edges.length}</p>

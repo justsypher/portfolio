@@ -1,37 +1,24 @@
 import type { ProjectMeta } from '../types'
-import { DISCIPLINE_COLORS } from '../data/graph'
-
-export const PROJECTS: ProjectMeta[] = [
-  {
-    title: 'Brand Identity',
-    slug: 'brand-identity',
-    discipline: 'Design',
-    tags: ['brand', 'identity', 'logo'],
-    date: '2024',
-    status: 'completed',
-    color: DISCIPLINE_COLORS.Design,
-    emoji: '✦',
-    summary: 'A complete visual identity system for a Berlin-based architecture firm.',
-  },
-  {
-    title: 'Graph Portfolio',
-    slug: 'graph-portfolio',
-    discipline: 'Code',
-    tags: ['react', 'd3', 'generative'],
-    date: '2025',
-    status: 'ongoing',
-    color: DISCIPLINE_COLORS.Code,
-    emoji: '⌨', // TODO : replace emojis with cover images
-    summary: 'This very portfolio.',
-  },
-  // add more later
-]
-
-
+import { getAllProjects } from './mdx'
 import type { AnyNode, ProjectNode, Edge } from '../types'
 import { STATIC_NODES, STRUCTURAL_EDGES, CATEGORY_IDS } from '../data/graph'
 
-export function buildGraphData(projects: ProjectMeta[] = PROJECTS) {
+
+export function buildGraphData() {
+  const mdxProjects = getAllProjects()
+
+  const projects: ProjectMeta[] = mdxProjects.map(({ meta }) => ({
+    title: meta.title,
+    slug: meta.slug,
+    discipline: meta.discipline,
+    tags: meta.tags,
+    date: meta.date,
+    status: meta.status,
+    color: meta.color,
+    emoji: meta.emoji,
+    summary: meta.summary,
+  }))
+
   const nodes: AnyNode[] = STATIC_NODES.map(n => ({ ...n }))
   const edges: Edge[] = STRUCTURAL_EDGES.map(e => [e[0], e[1]] as Edge)
 

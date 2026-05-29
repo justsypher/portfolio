@@ -45,3 +45,16 @@ export interface ProjectMeta {
   emoji: string
   summary: string
 }
+
+
+export interface ProjectContent {
+  title: string
+  slug: string
+  discipline: Discipline
+  tags: string[]
+  date: string
+  status: ProjectStatus
+  color: string
+  emoji: string
+  summary: string
+}

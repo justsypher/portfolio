@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { motion } from 'framer-motion'
 
 interface BootProps {
   onEnter: () => void
@@ -7,26 +8,28 @@ interface BootProps {
 const LINES = [
   '> Initializing...',
   '> Loading portfolio of',
-  'Ethan Cheynel',        // index 2 — serif, larger
+  'Ethan Cheynel', // index 2 — serif, larger
   '> Mapping connections...',
   '> Done.',
-  '> Press any key to enter_',
+  '> Press any key to enter_'
 ]
 
-export default function Boot({ onEnter }: BootProps) {
+export default function Boot ({ onEnter }: BootProps) {
   const [visible, setVisible] = useState(LINES.map(() => false))
 
   // Sequentially reveal lines with a delay
   useEffect(() => {
     const timeouts: ReturnType<typeof setTimeout>[] = []
     LINES.forEach((_, i) => {
-      timeouts.push(setTimeout(() => {
-        setVisible(prev => {
-          const next = [...prev]
-          next[i] = true
-          return next
-        })
-      }, i * 450))
+      timeouts.push(
+        setTimeout(() => {
+          setVisible(prev => {
+            const next = [...prev]
+            next[i] = true
+            return next
+          })
+        }, i * 450)
+      )
     })
     return () => timeouts.forEach(clearTimeout)
   }, [])
@@ -42,11 +45,18 @@ export default function Boot({ onEnter }: BootProps) {
   }, [onEnter])
 
   return (
-    <div style={{
-      position: 'fixed', inset: 0,
-      display: 'flex', flexDirection: 'column',
-      justifyContent: 'center', padding: '2rem',
-    }}>
+    <motion.div
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.3 }}
+      style={{
+        position: 'fixed',
+        inset: 0,
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        padding: '2rem'
+      }}
+    >
       {LINES.map((line, i) => (
         <p
           key={i}
@@ -58,12 +68,12 @@ export default function Boot({ onEnter }: BootProps) {
             fontSize: i === 2 ? '3rem' : '1.25rem',
             color: i === 2 ? 'var(--text-primary)' : 'var(--text-muted)',
             marginBottom: i === 2 ? '0.5rem' : '0.2rem',
-            fontWeight: 300,
+            fontWeight: 300
           }}
         >
           {line}
         </p>
       ))}
-    </div>
+    </motion.div>
   )
 }

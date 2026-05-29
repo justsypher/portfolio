@@ -1,14 +1,23 @@
 import type { ProjectNode } from '../../types'
 import { STATUS_COLORS } from '../../data/graph'
+import Separator from '../UI/Separator'
+import { motion } from 'framer-motion'
+import { EASING } from '../../lib/animation'
+import type { MDXProject } from '../../lib/mdx'
 
 interface ProjectPageProps {
   project: ProjectNode
+  content: React.ComponentType
   onBack: () => void
 }
 
-export default function ProjectPage ({ project, onBack }: ProjectPageProps) {
+export default function ProjectPage ({ project, content, onBack }: ProjectPageProps) {
   return (
-    <div
+    <motion.div
+      initial={{ opacity: 0, y: 16 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: 16 }}
+      transition={{ duration: 0.15, ease: EASING.smooth }}
       style={{
         position: 'fixed',
         inset: 0,
@@ -40,7 +49,7 @@ export default function ProjectPage ({ project, onBack }: ProjectPageProps) {
       {/* scrollable content */}
       <div style={{ padding: '64px 48px 48px' }}>
         <div
-        style={{
+          style={{
             width: '100%',
             height: 200,
             background: project.color + '18',
@@ -50,20 +59,20 @@ export default function ProjectPage ({ project, onBack }: ProjectPageProps) {
             justifyContent: 'center',
             fontSize: 48,
             marginBottom: 24
-        }}
+          }}
         >
-            {project.emoji}
+          {project.emoji}
         </div>
         <p
-        style={{
+          style={{
             fontFamily: 'var(--font-serif)',
             fontSize: 32,
             fontWeight: 300,
             color: 'var(--text-primary)',
             marginBottom: 8
-        }}
+          }}
         >
-            {project.label}
+          {project.label}
         </p>
         {project.date && project.status && (
           <p
@@ -73,7 +82,10 @@ export default function ProjectPage ({ project, onBack }: ProjectPageProps) {
               marginBottom: 4
             }}
           >
-            {project.date} · <span style={{ color: STATUS_COLORS[project.status] }}>{project.status}</span>
+            {project.date} ·{' '}
+            <span style={{ color: STATUS_COLORS[project.status] }}>
+              {project.status}
+            </span>
           </p>
         )}
         {project.tags && project.tags.length > 0 && (
@@ -87,32 +99,20 @@ export default function ProjectPage ({ project, onBack }: ProjectPageProps) {
             {project.tags.map(t => '#' + t).join(' ')}
           </p>
         )}
-        <div
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: 12,
-            margin: '24px 0'
-          }}
-        >
+        <Separator />
+        {content && (
           <div
-            style={{ flex: 1, height: '1.5px', background: 'var(--border)' }}
-          />
-          <span
             style={{
-              fontFamily: 'var(--font-mono)',
-              fontSize: 10,
-              color: 'var(--text-faint)'
+              fontFamily: 'var(--font-serif)',
+              fontSize: 16,
+              color: 'var(--text-secondary)',
+              lineHeight: 1.8
             }}
           >
-            ◈
-          </span>
-          <div
-            style={{ flex: 1, height: '1.5px', background: 'var(--border)' }}
-          />
-        </div>
-        {<p>this is placeholder text don't wry about that if you see this it means i forgot to remove it and i'm sorry T.T</p>/* qualities placeholder */}
+            <Content />
+          </div>
+        )}
       </div>
-    </div>
+    </motion.div>
   )
 }

@@ -4,6 +4,7 @@ import type { Edge } from '../../types'
 import { useSimulation } from '../../hooks/useSimulation'
 import { useGraphRenderer } from '../../hooks/useGraphRenderer'
 import PeekCard from '../UI/PeekCard'
+import { AnimatePresence } from 'framer-motion'
 
 interface GraphProps {
     nodes: AnyNode[]
@@ -170,14 +171,17 @@ export default function Graph({
                 onClick={isFullscreen ? handleClick : onEnterGraph}
                 style={{ display: 'block', cursor: isFullscreen ? 'default' : 'pointer' }}
             />
-            {peekNode && (
-                <PeekCard
-                    project={peekNode}
-                    containerWidth={size.width}
-                    containerHeight={size.height}
-                    onClick={() => onProjectClick(peekNode)}
-                />
-            )}
+            <AnimatePresence>
+                {peekNode && (
+                    <PeekCard
+                        key={peekNode.id}
+                        project={peekNode}
+                        containerWidth={size.width}
+                        containerHeight={size.height}
+                        onClick={() => onProjectClick(peekNode)}
+                    />
+                )}
+            </AnimatePresence>
         </div>
     )
 }
