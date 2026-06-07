@@ -1,0 +1,50 @@
+---
+title: AudioWorks
+slug: audioworks
+discipline: Code
+tags: [plugin, audio, obsidian]
+date: "2025-2026"
+status: ongoing
+color: "#dc6bff"
+emoji: 🎙️
+summary: Un plugin pour capturer, organiser et retrouver ses idées vocales directement dans Obsidian – parce qu’une pensée ne devrait pas se perdre dans un format.
+---
+
+J’utilise Obsidian depuis des années, et j’ai un rituel : dès qu’une idée me traverse l’esprit, je l’attrape. Parfois c’est un mot, une phrase, un paragraphe entier. Parfois, c’est juste *une impression*, quelque chose de trop fragile pour être écrit. Alors je sors mon téléphone, j’appuie sur "Enregistrer", et je parle.
+Le problème ? Ces fichiers audio restent des îlots isolés. Ils s’entassent dans un dossier, sans liens avec mes notes, sans métadonnées, sans moyen simple de les retrouver. Pire : certains formats ne sont même pas compatibles avec Obsidian. Résultat, je me retrouve avec des `.m4a` ou des `.aac` qui refusent de s’intégrer proprement à ma vault. Et quand je veux réécouter une idée, c’est la chasse au trésor.
+AudioWorks est né de cette frustration. L’idée était simple : **et si l’audio devenait une note comme les autres ?** Pas un fichier étranger à convertir, à renommer, à déplacer. Juste une pensée capturée, liée, annotée – prête à être retrouvée, développée, ou oubliée.
+
+---
+
+## Ce que ça change
+Avec AudioWorks, plus besoin de choisir entre la spontanéité de la voix et la rigueur d’Obsidian. Vous enregistrez une idée depuis votre téléphone ? Elle apparaît automatiquement dans votre vault, avec un titre, une date, et un lien vers la note en cours. Vous voulez réécouter un passage précis ? Cliquez sur un mot dans la transcription pour sauter directement à ce moment. Besoin de réenregistrer un segment ? Faites-le sans tout recommencer.
+La timeline devient un outil de navigation : vous zoomez, vous découpez, vous annotez. Les silences ? Supprimés en un clic. Les hésitations ? Transformées en texte pour les retravailler plus tard. Et si vous préférez garder l’enregistrement brut, pas de problème – le plugin gère les formats compatibles dès la capture.
+
+---
+
+## Comment j’ai conçu ça
+J’ai commencé par dessiner l’interface idéale : une fenêtre flottante, minimaliste, qui ne prend pas toute la place mais reste accessible. Une timeline pour naviguer dans l’enregistrement, des boutons pour les actions essentielles (enregistrer, pause, exporter), et un système de couleurs pour indiquer les états (en cours, en pause, terminé).
+Ensuite, j’ai listé toutes les frictions que je voulais éliminer :
+- **Les formats incompatibles** : Plus de `.m4a` ou `.aac` rejetés par Obsidian. Le plugin convertit tout en `.mp3` ou `.wav` à la volée.
+- **La gestion des fichiers** : Plus de dossiers éparpillés. Les enregistrements sont stockés dans un dossier dédié (`📁 AudioWorks/`) et liés automatiquement à des notes.
+- **La transcription** : Un bouton suffit pour transformer l’audio en texte, avec des timestamps cliquables pour naviguer dans l’enregistrement.
+J’ai fait tester le prototype à d’autres utilisateurs d’Obsidian. Leurs retours m’ont aidé à simplifier l’interface : *"Pourquoi il n’y a pas de bouton ‘Annuler’ ?"*, *"Je veux pouvoir renommer les enregistrements directement dans la timeline."* J’ai tout implémenté, puis j’ai recommencé.
+
+---
+
+## Ce que j’en retiens
+AudioWorks m’a appris une chose : **les meilleures solutions naissent des habitudes qu’on n’a pas envie de changer**. Je ne voulais pas renoncer à la spontanéité de la voix, ni à la puissance d’Obsidian. Alors j’ai créé un pont entre les deux.
+Techniquement, c’est un défi : gérer les permissions audio sur mobile, optimiser la transcription pour qu’elle soit rapide, intégrer tout ça dans l’API d’Obsidian sans tout casser. Mais le plus intéressant, c’était de réfléchir à l’expérience utilisateur. Comment rendre un outil audio aussi intuitif qu’un bloc-notes ? Comment guider l’utilisateur sans le submerger de boutons ?
+J’ai aussi réalisé à quel point les détails comptent. Un son discret quand l’enregistrement démarre. Une animation fluide quand on passe en mode pause. Un cercle rouge qui pulse pour rappeler que le micro est actif. Ces petits riens transforment un outil fonctionnel en quelque chose d’agréable à utiliser.
+
+---
+
+## Pourquoi ce projet ?
+Parce qu’il résout un problème que je connais par cœur : **la peur de perdre une idée**. Parce qu’il montre comment j’aborde un projet, de la frustration initiale à la solution finale. Et parce qu’il a du potentiel – il pourrait devenir bien plus qu’un simple enregistreur.
+Aujourd’hui, AudioWorks est encore en développement, mais l’objectif est clair : **faire de l’audio une partie intégrante du workflow Obsidian, sans compromis**.
+
+---
+
+### Inspirations
+  - [Music Player](https://github.com/noonesimg/obsidian-music-player) pour la gestion des playlists.
+  - [Whisper](https://github.com/openai/whisper) pour la transcription.
