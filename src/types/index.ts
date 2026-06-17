@@ -57,4 +57,5 @@ export interface ProjectContent {
   color: string
   emoji: string
   summary: string
+  gallery?: string[]
 }
