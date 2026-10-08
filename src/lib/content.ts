@@ -2,6 +2,7 @@ import type { ProjectMeta } from '../types'
 import { getAllProjects } from './mdx'
 import type { AnyNode, ProjectNode, Edge } from '../types'
 import { STATIC_NODES, STRUCTURAL_EDGES, CATEGORY_IDS } from '../data/graph'
+import { resolveImage } from './images'
 
 
 export function buildGraphData() {
@@ -15,7 +16,7 @@ export function buildGraphData() {
     date: meta.date,
     status: meta.status,
     color: meta.color,
-    emoji: meta.emoji,
+    hero: resolveImage(meta.hero),
     summary: meta.summary,
   }))
 
@@ -53,7 +54,7 @@ export function buildGraphData() {
       type: 'project',
       r: 12,
       color: p.color,
-      emoji: p.emoji,
+      hero: p.hero,
       slug: p.slug,
       discipline: p.discipline,
       tags: p.tags,

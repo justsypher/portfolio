@@ -30,7 +30,6 @@ export const STATIC_NODES: AnyNode[] = [
     type: 'category',
     r: 15,
     color: DISCIPLINE_COLORS.Design,
-    emoji: '✦',
     visible: false,
   },
   {
@@ -39,7 +38,6 @@ export const STATIC_NODES: AnyNode[] = [
     type: 'category',
     r: 15,
     color: DISCIPLINE_COLORS.Code,
-    emoji: '⌨',
     visible: false,
   },
   {
@@ -48,7 +46,6 @@ export const STATIC_NODES: AnyNode[] = [
     type: 'category',
     r: 15,
     color: DISCIPLINE_COLORS.Marketing,
-    emoji: '◎',
     visible: false,
   },
   {
@@ -57,7 +54,6 @@ export const STATIC_NODES: AnyNode[] = [
     type: 'category',
     r: 15,
     color: DISCIPLINE_COLORS.Ecriture,
-    emoji: '⌦',
     visible: false,
   },
 ]

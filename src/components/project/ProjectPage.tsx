@@ -10,13 +10,13 @@ interface ProjectPageProps {
   onBack: () => void
 }
 
-export default function ProjectPage ({ project, Component, onBack }: ProjectPageProps) {
+export default function ProjectPage({ project, Component, onBack }: ProjectPageProps) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: 16 }}
-      transition={{ duration: 0.15, ease: EASING.smooth as any}}
+      transition={{ duration: 0.15, ease: EASING.smooth as any }}
       style={{
         position: 'fixed',
         inset: 0,
@@ -47,21 +47,31 @@ export default function ProjectPage ({ project, Component, onBack }: ProjectPage
 
       {/* scrollable content */}
       <div style={{ padding: '64px 48px 48px' }}>
-        <div
-          style={{
-            width: '100%',
-            height: 200,
-            background: project.color + '18',
-            borderRadius: 8,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            fontSize: 48,
-            marginBottom: 24
-          }}
-        >
-          {project.emoji}
-        </div>
+        {project.hero ? (
+          <img
+            src={project.hero}
+            alt={project.label}
+            style={{
+              width: '100%',
+              aspectRatio: '16 / 9',
+              maxHeight: 420,
+              objectFit: 'cover',
+              borderRadius: 8,
+              marginBottom: 24,
+              display: 'block'
+            }}
+          />
+        ) : (
+          <div
+            style={{
+              width: '100%',
+              height: 200,
+              background: project.color + '18',
+              borderRadius: 8,
+              marginBottom: 24
+            }}
+          />
+        )}
         <p
           style={{
             fontFamily: 'var(--font-serif)',

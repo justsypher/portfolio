@@ -8,7 +8,6 @@ export interface GraphNode {
   type: NodeType
   r?: number
   color: string
-  hero: string
   visible?: boolean
   fixed?: boolean
   // Added by D3 at runtime
@@ -26,6 +25,7 @@ export interface ProjectNode extends GraphNode {
   discipline: Discipline
   tags: string[]
   date: string
+  hero?: string
   status: ProjectStatus
   summary: string
 }
@@ -42,7 +42,7 @@ export interface ProjectMeta {
   date: string
   status: ProjectStatus
   color: string
-  hero: string
+  hero?: string
   summary: string
 }
 
@@ -55,6 +55,7 @@ export interface ProjectContent {
   date: string
   status: ProjectStatus
   color: string
-  hero: string
+  hero?: string
   summary: string
+  gallery?: string[]
 }

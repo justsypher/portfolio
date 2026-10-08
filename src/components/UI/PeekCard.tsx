@@ -11,9 +11,9 @@ interface PeekCardProps {
 }
 
 const CARD_WIDTH = 220
-const CARD_HEIGHT = 200
+const CARD_HEIGHT = 290
 
-export default function PeekCard ({
+export default function PeekCard({
   project,
   containerWidth,
   containerHeight,
@@ -31,7 +31,7 @@ export default function PeekCard ({
       initial={{ opacity: 0, scale: 0.93, y: 4 }}
       animate={{ opacity: 1, scale: 1, y: 0 }}
       exit={{ opacity: 0, scale: 0.93, y: 4 }}
-      transition={{ duration: 0.18, ease: EASING.spring as any}}
+      transition={{ duration: 0.18, ease: EASING.spring as any }}
       onClick={onClick}
       style={{
         position: 'absolute',
@@ -46,6 +46,15 @@ export default function PeekCard ({
         zIndex: 50
       }}
     >
+      {project.hero ? (
+        <img
+          src={project.hero}
+          alt=""
+          style={{ width: '100%', height: 90, objectFit: 'cover', display: 'block' }}
+        />
+      ) : (
+        <div style={{ width: '100%', height: 90, background: project.color + '18' }} />
+      )}
       <div style={{ padding: 12 }}>
         <p
           style={{
