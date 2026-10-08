@@ -57,4 +57,5 @@ export interface ProjectContent {
   color: string
   hero: string
   summary: string
+  gallery?: string[]
 }
