@@ -8,7 +8,7 @@ export interface GraphNode {
   type: NodeType
   r?: number
   color: string
-  emoji?: string
+  hero: string
   visible?: boolean
   fixed?: boolean
   // Added by D3 at runtime
@@ -42,7 +42,7 @@ export interface ProjectMeta {
   date: string
   status: ProjectStatus
   color: string
-  emoji: string
+  hero: string
   summary: string
 }
 
@@ -55,6 +55,6 @@ export interface ProjectContent {
   date: string
   status: ProjectStatus
   color: string
-  emoji: string
+  hero: string
   summary: string
 }
