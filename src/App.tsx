@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useEffect } from 'react'
 import { buildGraphData } from './lib/content'
 import type { AppView, ProjectNode } from './types'
 import Boot from './components/boot/Boot'
@@ -8,13 +8,19 @@ import ProjectPage from './components/project/ProjectPage'
 import { AnimatePresence } from 'framer-motion'
 import { getAllProjects } from './lib/mdx'
 
-function App () {
+function App() {
   const [view, setView] = useState<AppView>('boot')
   const [activeProject, setActiveProject] = useState<ProjectNode | null>(null)
   const [activeComponent, setActiveComponent] =
     useState<React.ComponentType | null>(null)
 
   const { nodes, edges } = useMemo(() => buildGraphData(), [])
+  useEffect(() => {
+    nodes.forEach(n => {
+      const hero = n.type === 'project' ? (n as ProjectNode).hero : undefined
+      if (hero) new Image().src = hero
+    })
+  }, [nodes])
   const mdxProjects = useMemo(() => getAllProjects(), [])
 
   return (

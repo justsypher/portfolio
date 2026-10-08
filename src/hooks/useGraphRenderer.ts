@@ -9,16 +9,6 @@ interface DrawOptions {
     pulse: number
 }
 
-const imageCache = new Map<string, HTMLImageElement>()
-
-function getImage(src: string): HTMLImageElement | null {
-  if (imageCache.has(src)) return imageCache.get(src)!
-  const img = new Image()
-  img.onload = () => imageCache.set(src, img)
-  img.src = src
-  return null
-}
-
 export function useGraphRenderer(
     canvasRef: React.RefObject<HTMLCanvasElement | null>
 ) {
