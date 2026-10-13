@@ -3,6 +3,7 @@ import { STATUS_COLORS } from '../../data/graph'
 import Separator from '../UI/Separator'
 import { motion } from 'framer-motion'
 import { EASING } from '../../lib/animation'
+import Gallery from './Gallery'
 
 interface ProjectPageProps {
   project: ProjectNode
@@ -36,7 +37,7 @@ export default function ProjectPage({ project, Component, onBack }: ProjectPageP
           border: 'none',
           cursor: 'pointer',
           fontFamily: 'var(--font-mono)',
-          fontSize: 10,
+          fontSize: '1rem',
           color: 'var(--text-muted)',
           letterSpacing: '0.06em',
           zIndex: 90
@@ -46,7 +47,13 @@ export default function ProjectPage({ project, Component, onBack }: ProjectPageP
       </button>
 
       {/* scrollable content */}
-      <div style={{ padding: '64px 48px 48px' }}>
+      <div
+        style={{
+          margin: '0 auto',
+          maxWidth: '90vw',
+          padding: '64px clamp(20px, 5vw, 48px) 48px'
+        }}
+      >
         {project.hero ? (
           <img
             src={project.hero}
@@ -72,47 +79,45 @@ export default function ProjectPage({ project, Component, onBack }: ProjectPageP
             }}
           />
         )}
-        <p
-          style={{
-            fontFamily: 'var(--font-serif)',
-            fontSize: 32,
-            fontWeight: 300,
-            color: 'var(--text-primary)',
-            marginBottom: 8
-          }}
-        >
-          {project.label}
-        </p>
-        {project.date && project.status && (
+        <div>
           <p
             style={{
-              fontSize: 10,
-              color: 'var(--text-muted)',
-              marginBottom: 4
+              fontFamily: 'var(--font-mono)',
+              fontSize: 32,
+              fontWeight: 300,
+              color: 'var(--text-primary)',
+              marginBottom: 8
             }}
           >
-            {project.date} ·{' '}
-            <span style={{ color: STATUS_COLORS[project.status] }}>
-              {project.status}
-            </span>
+            {project.label}
           </p>
+          {project.date && project.status && (
+            <p style={{ fontSize: 10, color: 'var(--text-muted)', marginBottom: 4 }}>
+              {project.date} ·{' '}
+              <span style={{ color: STATUS_COLORS[project.status] }}>
+                {project.status}
+              </span>
+            </p>
+          )}
+          {project.tags && project.tags.length > 0 && (
+            <p style={{ fontSize: 10, color: 'var(--text-muted)', marginBottom: 6 }}>
+              {project.tags.map(t => '#' + t).join(' ')}
+            </p>
+          )}
+          <Separator />
+        </div>
+
+        {project.gallery && project.gallery.length > 0 && (
+          <Gallery images={project.gallery} title={project.label} />
         )}
-        {project.tags && project.tags.length > 0 && (
-          <p
-            style={{
-              fontSize: 10,
-              color: 'var(--text-muted)',
-              marginBottom: 6
-            }}
-          >
-            {project.tags.map(t => '#' + t).join(' ')}
-          </p>
-        )}
-        <Separator />
+
         {Component && (
           <div
             style={{
-              fontFamily: 'var(--font-serif)',
+              maxWidth: '85ch',
+              margin: 'auto',
+              padding: '2rem 0 0 0',
+              fontFamily: 'var(--font-mono)',
               fontSize: 16,
               color: 'var(--text-secondary)',
               lineHeight: 1.8

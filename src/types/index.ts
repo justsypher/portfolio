@@ -26,6 +26,7 @@ export interface ProjectNode extends GraphNode {
   tags: string[]
   date: string
   hero?: string
+  gallery?: string[]
   status: ProjectStatus
   summary: string
 }
@@ -43,6 +44,7 @@ export interface ProjectMeta {
   status: ProjectStatus
   color: string
   hero?: string
+  gallery?: string[]
   summary: string
 }
 

@@ -17,6 +17,9 @@ export function buildGraphData() {
     status: meta.status,
     color: meta.color,
     hero: resolveImage(meta.hero),
+    gallery: meta.gallery
+      ?.map(name => resolveImage(name))
+      .filter((url): url is string => !!url),
     summary: meta.summary,
   }))
 
@@ -55,6 +58,7 @@ export function buildGraphData() {
       r: 12,
       color: p.color,
       hero: p.hero,
+      gallery: p.gallery,
       slug: p.slug,
       discipline: p.discipline,
       tags: p.tags,
