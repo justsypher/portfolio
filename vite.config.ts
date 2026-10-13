@@ -3,6 +3,7 @@ import react from '@vitejs/plugin-react'
 import mdx from '@mdx-js/rollup'
 import remarkFrontmatter from 'remark-frontmatter'
 import remarkMdxFrontmatter from 'remark-mdx-frontmatter'
+import remarkBreaks from 'remark-breaks'
 
 export default defineConfig({
   plugins: [
@@ -10,6 +11,7 @@ export default defineConfig({
       remarkPlugins: [
         remarkFrontmatter,
         remarkMdxFrontmatter,
+        remarkBreaks,
       ],
     }),
     react(),

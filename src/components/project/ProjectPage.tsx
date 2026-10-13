@@ -113,7 +113,9 @@ export default function ProjectPage({ project, Component, onBack }: ProjectPageP
 
         {Component && (
           <div
+            className="prose"
             style={{
+              '--accent': project.color,
               maxWidth: '85ch',
               margin: 'auto',
               padding: '2rem 0 0 0',
